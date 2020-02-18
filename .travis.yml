@@ -1,0 +1,15 @@
+sudo: required
+addons:
+  apt:
+    packages:
+    - libguestfs-tools
+    - wget
+env:
+  - LIBGUESTFS_BACKEND=direct
+before_script:
+  - sudo chmod +x vm-images/3proxy/descriptor.sh
+script:
+  - cd image-descriptors/3proxy/
+  - sudo ./descriptor.sh
+after_script:
+  - echo "Build success"
