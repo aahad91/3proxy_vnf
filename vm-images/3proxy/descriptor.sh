@@ -21,6 +21,8 @@ virt-customize -a xenial-server-cloudimg-amd64-disk1.img \
       --run-command 'DEBIAN_FRONTEND=noninteractive' \
       --run-command 'apt-get install -y \
                       git \
+                      gcc \
+                      make \
                       net-tools \
                       iproute2 \
                       inetutils-ping \
@@ -35,7 +37,7 @@ virt-customize -a xenial-server-cloudimg-amd64-disk1.img \
       --run-command 'ln -s Makefile.Linux Makefile' \
       --run-command 'make' \
       --run-command 'make install' \
-      --run-commnad 'cd /' \
+      --run-command 'cd /' \
       --upload start.sh:/start.sh \
       --upload stop.sh:/stop.sh \
       --upload 3proxy.cfg:/etc/3proxy/3proxy.cfg \
