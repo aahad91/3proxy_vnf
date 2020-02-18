@@ -9,7 +9,7 @@ env:
 before_script:
   - sudo chmod +x vm-images/3proxy/descriptor.sh
 script:
-  - cd image-descriptors/3proxy/
+  - cd vm-images/3proxy/
   - sudo ./descriptor.sh
 after_script:
   - echo "Build success"
