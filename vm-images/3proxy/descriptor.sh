@@ -17,33 +17,17 @@ wget http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-
 #         virt-customize -a [DOWNLOADED_FILE_NAME] --upload [src-file:dest-file]
 #Run with sudo
 virt-customize -a xenial-server-cloudimg-amd64-disk1.img \
-      --run-command 'apt-get update' \
-      --run-command 'DEBIAN_FRONTEND=noninteractive' \
-      --run-command 'apt-get install -y \
-                      git \
-                      gcc \
-                      make \
-                      net-tools \
-                      iproute2 \
-                      inetutils-ping \
-                      iptables \
-                      curl \
-                      python \
-                      python-yaml \
-                      python3 \
-                      python3-pip' \
-      --run-command 'git clone https://github.com/z3apa3a/3proxy' \
-      --run-command 'cd 3proxy' \
-      --run-command 'ln -s Makefile.Linux Makefile' \
-      --run-command 'make' \
-      --run-command 'make install' \
-      --run-command 'cd /' \
+      --run-command 'echo "manage_etc_hosts: true" >> /etc/cloud/cloud.cfg' \
+      --mkdir /tngbench_share \
       --upload start.sh:/start.sh \
       --upload stop.sh:/stop.sh \
-      --upload 3proxy.cfg:/etc/3proxy/3proxy.cfg \
       --run-command 'chmod +x start.sh' \
       --run-command 'chmod +x stop.sh' \
-      --mkdir /tngbench_share
+      --upload install.sh:/install.sh \
+      --run install.sh \
+      --upload 3proxy.cfg:/etc/3proxy/3proxy.cfg
+
+
 
 # OpenStack command to add squid image
 #source /opt/stack/devstack/accrc/admin/admin
