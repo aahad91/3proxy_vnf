@@ -25,7 +25,7 @@ service_experiments:
     measurement_points:
       - name: "mp.input"
         connection_point: "ns:input"
-        vm_image: "apache-bench-ubuntu"
+        vm_image: "apache-bench-3proxy"
       - name: "mp.output"
         connection_point: "ns:output"
         vm_image: "apache-webserver"
